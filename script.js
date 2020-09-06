@@ -1,6 +1,7 @@
 // select items
-const url =
-  'https://geo.ipify.org/api/v1?apiKey=at_ZKpjRKaiY2e4DwDzkuMZHpEjp03iG&ipAddress=8.8.8.8';
+const api =
+  'https://geo.ipify.org/api/v1?apiKey=at_ZKpjRKaiY2e4DwDzkuMZHpEjp03iG';
+const searchInput = document.querySelector('.search-input');
 const ipUser = document.querySelector('#ip');
 const locationUser = document.querySelector('#location');
 const timezoneUser = document.querySelector('#timezone');
@@ -9,9 +10,11 @@ const markerIcon = L.icon({
   iconUrl: './images/icon-location.svg',
   iconAnchor: [22, 94],
 });
+let lat = 51.505;
+let lng = -0.09;
 
 // map
-const ipMap = L.map('ip-map').setView([51.505, -0.09], 13);
+const ipMap = L.map('ip-map').setView([lat, lng], 13);
 L.tileLayer(
   'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
   {
@@ -25,14 +28,46 @@ L.tileLayer(
   }
 ).addTo(ipMap);
 
-const marker = L.marker([51.5, -0.09], { icon: markerIcon }).addTo(ipMap);
+// check ip or domain
+const checkRequest = () => {
+  const ipRegex = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gm;
+  const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:.[a-zA-Z]{2,})+$/;
 
-fetch(url).then(function (response) {
-  response.json().then(function (data) {
-    console.log(data);
-    ipUser.innerHTML = data.ip;
-    locationUser.innerHTML = data.location.city;
-    timezoneUser.innerHTML = data.location.timezone;
-    ispUser.innerHTML = data.isp;
-  });
-});
+  if (searchInput.value && ipRegex.test(searchInput.value)) {
+    return {
+      type: 'ip',
+      value: searchInput.value,
+    };
+  } else if (searchInput.value && domainRegex.test(searchInput.value)) {
+    return {
+      type: 'domain',
+      value: searchInput.value,
+    };
+  }
+  // return user's ip by default
+  return {
+    type: 'ip',
+    value: '',
+  };
+};
+
+// get ip
+async function getUserIp() {
+  let options = checkRequest();
+  let req = await fetch(`${api}&${options.type}=${options.value}`);
+  let data = await req.json();
+  searchInput.value = '';
+  ipUser.innerHTML = data.ip;
+  locationUser.innerHTML = `${data.location.city}, ${data.location.region} ${data.location.postalCode}`;
+  timezoneUser.innerHTML = `UTC ${data.location.timezone}`;
+  ispUser.innerHTML = data.isp;
+  lat = data.location.lat;
+  lng = data.location.lng;
+
+  let marker = L.marker([lat, lng], { icon: markerIcon });
+  ipMap.setView([lat, lng]);
+  marker.addTo(ipMap);
+}
+// submit value from input
+
+getUserIp();
