@@ -36,6 +36,7 @@ body
     border-radius: 15px
 
   .results-container
+    padding: 1.5rem
     height: 294px
     width: calc(100% - 3rem)
     left: 1.5rem
@@ -43,8 +44,20 @@ body
     border-radius: 15px
     z-index: 666
 
-    .result-title
-      color: $darkGray
+    .result
+      margin-bottom: 1.5rem 
+
+      .result-title
+        color: $darkGray
+        font-size: 0.625rem
+        font-weight: 700
+        letter-spacing: 1.46px
+
+      .result-data
+        color: $veryDarkGray
+        font-size: 1.25rem
+        line-height: 1.5rem
+        letter-spacing: -0.18px
 
 #ip-map
   height: calc(100vh - 300px)
