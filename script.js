@@ -2,6 +2,7 @@
 const api =
   'https://geo.ipify.org/api/v1?apiKey=at_ZKpjRKaiY2e4DwDzkuMZHpEjp03iG';
 const searchInput = document.querySelector('.search-input');
+const submitBtn = document.querySelector('.submit-btn');
 const ipUser = document.querySelector('#ip');
 const locationUser = document.querySelector('#location');
 const timezoneUser = document.querySelector('#timezone');
@@ -69,5 +70,16 @@ async function getUserIp() {
   marker.addTo(ipMap);
 }
 // submit value from input
+submitBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  getUserIp();
+});
+
+// submit on enter keypress
+searchInput.addEventListener('keypress', (e) => {
+  if (e.keyCode === 13) {
+    getUserIp();
+  }
+});
 
 getUserIp();
