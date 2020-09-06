@@ -30,10 +30,24 @@ body
     line-height: 1.875rem
     letter-spacing: -0.23px
 
-  .search-input
-    height: 3.625rem
+  .search-ip-form
     width: 100%
-    border-radius: 15px
+
+    .search-input
+      height: 3.625rem
+      width: calc(100% - 3.625rem)
+      left: 0
+      border-top-left-radius: 15px
+      border-bottom-left-radius: 15px
+
+    .submit-btn
+      background: $veryDarkGray
+      height: 3.625rem
+      width: 3.625rem
+      right: 0
+      border: none
+      border-top-right-radius: 15px
+      border-bottom-right-radius: 15px
 
   .results-container
     padding: 1.5rem

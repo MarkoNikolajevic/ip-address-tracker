@@ -34,11 +34,19 @@
   <body>
     <header class="main-header text-center px-6 pt-6 relative">
       <h1 class="title text-white font-medium mb-6">IP Address Tracker</h1>
-      <input
-        class="search-input pl-6 py-4"
-        type="text"
-        placeholder="Search for any IP address or domain"
-      />
+      <form class="search-ip-form relative">
+        <input
+          class="search-input pl-6 py-4 absolute"
+          type="text"
+          placeholder="Search for any IP address or domain"
+        />
+        <button
+          class="submit-btn absolute flex items-center justify-center"
+          type="submit"
+        >
+          <img src="./images/icon-arrow.svg" alt="arrow right" />
+        </button>
+      </form>
       <div
         class="results-container p-6 bg-white absolute flex flex-col items-center justify-center text-center"
       >
