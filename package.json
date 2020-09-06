@@ -1,0 +1,23 @@
+{
+  "name": "ip-address-tracker",
+  "version": "1.0.0",
+  "description": "Ip address tracker made following front end mentor",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass --output-style compressed -o dist/style/css src/style/sass",
+    "autoprefixer": "postcss -u autoprefixer -r dist/style/css/*",
+    "serve": "browser-sync start --server --files 'dist/style/css/*.css'",
+    "build:css": "npm run sass && npm run autoprefixer",
+    "watch:css": "onchange 'src/style/sass/*.sass' -- npm run build:css"
+  },
+  "keywords": [],
+  "author": "Marko Nikolajevic",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "browser-sync": "^2.26.12",
+    "node-sass": "^4.14.1",
+    "onchange": "^7.0.2",
+    "postcss-cli": "^7.1.2"
+  }
+}

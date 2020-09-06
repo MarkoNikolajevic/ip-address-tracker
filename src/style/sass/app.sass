@@ -1,0 +1,50 @@
+// variables
+$veryDarkGray: hsl(0, 0%, 17%)
+$darkGray: hsl(0, 0%, 59%)
+$fontFamily: 'Rubik', sans-serif
+
+// reset
+*,
+*::before,
+*::after
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+// main style
+html
+  font-family: $fontFamily
+
+body
+  color: $veryDarkGray
+
+.main-header
+  background-image: url('../../../images/pattern-bg.png')
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+  height: 300px
+
+  .title
+    font-size: 1.625rem
+    line-height: 1.875rem
+    letter-spacing: -0.23px
+
+  .search-input
+    height: 3.625rem
+    width: 100%
+    border-radius: 15px
+
+  .results-container
+    height: 294px
+    width: calc(100% - 3rem)
+    left: 1.5rem
+    top: 50%
+    border-radius: 15px
+    z-index: 666
+
+    .result-title
+      color: $darkGray
+
+#ip-map
+  height: calc(100vh - 300px)

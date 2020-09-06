@@ -1,0 +1,4 @@
+/node_modules
+.DS.Store
+npm-debug.log*
+style-guide.md
