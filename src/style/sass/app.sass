@@ -25,13 +25,25 @@ body
   background-repeat: no-repeat
   height: 300px
 
+  @media screen and (min-width: 70rem)
+    height: 280px
+
   .title
     font-size: 1.625rem
     line-height: 1.875rem
     letter-spacing: -0.23px
 
+    @media screen and (min-width: 70rem)
+      font-size: 2rem
+      line-height: 1.875rem
+      letter-spacing: -0.29px
+
   .search-ip-form
     width: 100%
+
+    @media screen and (min-width: 70rem)
+      width: 34rem
+      margin: auto
 
     .search-input
       height: 3.625rem
@@ -48,6 +60,11 @@ body
       border: none
       border-top-right-radius: 15px
       border-bottom-right-radius: 15px
+      cursor: pointer
+      transition: all 500ms ease-in-out
+
+      &:hover
+        background: #3f3f3f
 
   .results-container
     padding: 1.5rem
@@ -57,9 +74,28 @@ body
     top: 50%
     border-radius: 15px
     z-index: 666
+    box-shadow: 0 50px 50px -25px rgba(0,0,0,0.1)
+
+    @media screen and (min-width: 70rem)
+      width: 68rem
+      height: 10rem
+      left: calc((100% - 68rem) / 2)
+      top: 70%
+      padding: 2.5rem
 
     .result
-      margin-bottom: 1.25rem 
+      margin-bottom: 1.25rem
+
+      @media screen and (min-width: 70rem)
+        &:not(:last-of-type)
+          &::after
+            content: ''
+            position: absolute
+            width: 1px
+            height: 75px
+            background: $darkGray
+            right: -40px
+            top: 0
 
       .result-title
         color: $darkGray
@@ -68,11 +104,26 @@ body
         letter-spacing: 1.46px
         margin-bottom: 0.25rem
 
+        @media screen and (min-width: 70rem)
+          font-size: 0.75rem
+          letter-spacing: 1.75px
+
       .result-data
         color: $veryDarkGray
         font-size: 1.25rem
         line-height: 1.5rem
         letter-spacing: -0.18px
 
+        @media screen and (min-width: 70rem)
+          font-size: 1.625rem
+          line-height: 1.875rem
+          letter-spacing: -0.23px
+
 #ip-map
   height: calc(100vh - 300px)
+
+  @media screen and (min-width: 70rem)
+    height: calc(100vh - 280px)
+
+  .leaflet-control-zoom
+    display: none

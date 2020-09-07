@@ -32,8 +32,10 @@
     <link rel="stylesheet" href="./dist/style/css/app.css" />
   </head>
   <body>
-    <header class="main-header text-center px-6 pt-6 relative">
-      <h1 class="title text-white font-medium mb-6">IP Address Tracker</h1>
+    <header class="main-header text-center px-6 pt-6 lg:pt-8 relative">
+      <h1 class="title text-white font-medium mb-6 lg:mb-8">
+        IP Address Tracker
+      </h1>
       <form class="search-ip-form relative">
         <input
           class="search-input pl-6 py-4 absolute"
@@ -48,17 +50,17 @@
         </button>
       </form>
       <div
-        class="results-container p-6 bg-white absolute flex flex-col items-center justify-center text-center"
+        class="results-container p-6 bg-white absolute flex flex-col lg:flex-row items-center justify-center lg:justify-between text-center"
       >
-        <div class="result">
+        <div class="result relative">
           <h4 class="result-title uppercase">IP Address</h4>
           <p class="result-data" id="ip"></p>
         </div>
-        <div class="result">
+        <div class="result relative">
           <h4 class="result-title uppercase">Location</h4>
           <p class="result-data" id="location"></p>
         </div>
-        <div class="result">
+        <div class="result relative">
           <h4 class="result-title uppercase">Timezone</h4>
           <p class="result-data" id="timezone"></p>
         </div>

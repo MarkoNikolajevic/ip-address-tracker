@@ -21,6 +21,7 @@ L.tileLayer(
   {
     zoomControl: false,
     maxZoom: 18,
+    zoom: -1,
     id: 'mapbox/streets-v11',
     tileSize: 512,
     zoomOffset: -1,

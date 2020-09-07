@@ -2,3 +2,4 @@
 .DS.Store
 npm-debug.log*
 style-guide.md
+dist/
