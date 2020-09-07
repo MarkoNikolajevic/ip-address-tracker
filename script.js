@@ -3,6 +3,8 @@ const api =
   'https://geo.ipify.org/api/v1?apiKey=at_ZKpjRKaiY2e4DwDzkuMZHpEjp03iG';
 const searchInput = document.querySelector('.search-input');
 const submitBtn = document.querySelector('.submit-btn');
+const results = document.querySelectorAll('.result');
+const spinner = document.querySelector('#spinner');
 const ipUser = document.querySelector('#ip');
 const locationUser = document.querySelector('#location');
 const timezoneUser = document.querySelector('#timezone');
@@ -55,6 +57,10 @@ const checkRequest = () => {
 
 // get ip
 async function getUserIp() {
+  for (let i = 0; i < results.length; i++) {
+    results[i].style.display = 'none';
+  }
+  spinner.style.display = 'block';
   let options = checkRequest();
   let req = await fetch(`${api}&${options.type}=${options.value}`);
   let data = await req.json();
@@ -65,6 +71,10 @@ async function getUserIp() {
   ispUser.innerHTML = data.isp;
   lat = data.location.lat;
   lng = data.location.lng;
+  for (let i = 0; i < results.length; i++) {
+    results[i].style.display = 'block';
+  }
+  spinner.style.display = 'none';
 
   let marker = L.marker([lat, lng], { icon: markerIcon });
   ipMap.setView([lat, lng]);
