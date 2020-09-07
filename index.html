@@ -20,6 +20,10 @@
     />
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
       crossorigin=""
@@ -36,11 +40,13 @@
       <h1 class="title text-white font-medium mb-6 lg:mb-8">
         IP Address Tracker
       </h1>
-      <form class="search-ip-form relative">
+      <form
+        class="search-ip-form relative animate__animated animate__slideInRight"
+      >
         <input
           class="search-input pl-6 py-4 absolute"
           type="text"
-          placeholder="Search for any IP address or domain"
+          placeholder="Search for any IP or domain"
         />
         <button
           class="submit-btn absolute flex items-center justify-center"
@@ -50,7 +56,7 @@
         </button>
       </form>
       <div
-        class="results-container p-6 bg-white absolute flex flex-col lg:flex-row items-center justify-center lg:justify-between text-center"
+        class="results-container p-6 bg-white absolute flex flex-col lg:flex-row items-center justify-center lg:justify-between text-center animate__animated animate__slideInLeft"
       >
         <div class="result relative">
           <h4 class="result-title uppercase">IP Address</h4>
